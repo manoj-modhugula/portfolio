@@ -250,7 +250,6 @@
 .experience-photo-meta { position: absolute; z-index: 1; inset: auto 24px 22px; display: flex; align-items: flex-end; justify-content: space-between; gap: 16px 24px; color: #fff; text-shadow: 0 1px 3px rgb(0 0 0 / .45); }
 .experience-position { min-width: 0; }
 .experience-role { font-size: 16px; line-height: 1.4; }
-.experience-team { font-size: 14px; line-height: 1.4; margin-top: 3px; }
 .experience-dates { max-width: 42%; font-size: 14px; line-height: 1.4; text-align: right; text-wrap: balance; }
 .experience-headline { font-size: 28px; font-weight: 400; line-height: 1.15; }
 .experience-results { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; border-top: 1px solid var(--border); padding-top: 18px; margin-top: 20px; }
@@ -270,7 +269,7 @@
   .experience-info { padding: 18px; }
   .experience-photo-meta { inset-inline: 18px; bottom: 18px; gap: 12px 18px; }
   .experience-role { font-size: 15px; }
-  .experience-team, .experience-dates { font-size: 13px; }
+  .experience-dates { font-size: 13px; }
   .experience-headline { font-size: 24px; }
   .experience-results { gap: 14px; padding-top: 14px; margin-top: 16px; }
   .experience-results dt { font-size: 28px; }
@@ -283,7 +282,6 @@
   .experience-image { aspect-ratio: 4 / 3; }
   .experience-photo-meta { inset-inline: 20px; bottom: 18px; flex-direction: column; align-items: flex-start; gap: 10px; }
   .experience-dates { max-width: none; font-size: 12px; text-align: left; }
-  .experience-team { font-size: 13px; }
   .experience-headline { font-size: 24px; }
   .experience-results { grid-template-columns: 1fr; gap: 20px; }
   .experience-results dt { font-size: 28px; }

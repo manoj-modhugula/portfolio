@@ -49,7 +49,6 @@ export function Experience() {
                 <div className="experience-photo-meta">
                   <div className="experience-position">
                     <p className="experience-role">{job.role}</p>
-                    <p className="experience-team">{job.team}</p>
                   </div>
                   <p className="experience-dates">{job.location} · {job.displayDates}</p>
                 </div>
