@@ -14,7 +14,7 @@ The home page introduces the projects and experience at MathWorks, Georgia State
 
 ## Development
 
-Use Node.js 22 or later and npm.
+Use Node.js 22 and npm.
 
 ```sh
 npm ci
@@ -42,7 +42,7 @@ Vite prints the local development URL. For a private-network preview, set `PORTF
 
 ## Hosting
 
-Static hosting is configured in `.openai/hosting.json`. Keep deployment credentials out of the repository.
+Vercel builds are configured in `vercel.json` and serve the prerendered `.output/public` directory. The existing Sites deployment is configured separately in `.openai/hosting.json`. Keep deployment credentials out of the repository.
 
 When changing the public domain, update `src/lib/profile.ts`, `public/sitemap.xml`, and `public/llms.txt`. Search indexing is currently disabled by the site's metadata and `public/robots.txt`.
 

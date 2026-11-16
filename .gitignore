@@ -40,3 +40,6 @@ dist-ssr
 
 # Site publishing output
 *.tar.gz
+
+# Vercel local project settings
+.vercel
