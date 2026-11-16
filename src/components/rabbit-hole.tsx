@@ -17,6 +17,21 @@ import { cn } from "@/lib/utils";
 // knows to finish the animation instead of just appearing.
 export const FELL_IN = "fell-down-the-rabbit-hole";
 export const CLIMBED_OUT = "climbed-out-of-the-rabbit-hole";
+export const RABBIT_HOLE_RETURN = "rabbit-hole-return";
+const RETURN_FILTER = "rabbit-hole-return-filter";
+
+export function takeRabbitHoleReturn() {
+  try {
+    const saved = sessionStorage.getItem(RETURN_FILTER);
+    sessionStorage.removeItem(RETURN_FILTER);
+    if (!saved) return null;
+    const value = JSON.parse(saved);
+    if (!["All", "AI", "Research", "Open source"].includes(value.filter)) return null;
+    return value as { filter: string };
+  } catch {
+    return null;
+  }
+}
 
 // The things that get sucked in (and spat back out), with where they start
 // as a fraction of the screen, and their size in px.
@@ -58,7 +73,7 @@ export const takeFlag = (key: string) => {
 // "more rabbit holes →" — hover asks "you sure?", click says "okay…", and the
 // page falls in: objects drift in, spiral into a hole that swallows the screen,
 // "down we go.", "you fell in. here's the rest." and we land on /work.
-export function RabbitHoleButton() {
+export function RabbitHoleButton({ filter }: { filter: string }) {
   const navigate = useNavigate();
   const ref = useRef<HTMLButtonElement>(null);
   const [hovered, setHovered] = useState(false);
@@ -68,6 +83,11 @@ export function RabbitHoleButton() {
     const button = ref.current;
     if (!button || origin) return;
     const r = button.getBoundingClientRect();
+    try {
+      sessionStorage.setItem(RETURN_FILTER, JSON.stringify({ filter }));
+    } catch {
+      // The return anchor still works when session storage is unavailable.
+    }
     setOrigin({ x: r.left + r.width / 2, y: r.top + r.height / 2 });
     remember(FELL_IN);
   };
@@ -302,7 +322,7 @@ export function ClimbBackButton({ className, children }: { className?: string; c
       >
         {children}
       </button>
-      {origin && <ClimbOut origin={origin} onDone={() => void navigate({ to: "/", hash: "work" })} />}
+      {origin && <ClimbOut origin={origin} onDone={() => void navigate({ to: "/", hash: RABBIT_HOLE_RETURN, resetScroll: false, hashScrollIntoView: false })} />}
     </>
   );
 }

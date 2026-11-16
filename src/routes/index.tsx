@@ -16,7 +16,7 @@ import laptop from "@/assets/manoj-laptop-portrait.webp";
 import mealworksImage from "@/assets/project-mealworks.jpg";
 import firmlyImage from "@/assets/project-firmly.jpg";
 import sayloImage from "@/assets/project-saylo.webp";
-import { CLIMBED_OUT, RabbitHoleButton, takeFlag } from "@/components/rabbit-hole";
+import { CLIMBED_OUT, RABBIT_HOLE_RETURN, RabbitHoleButton, takeFlag, takeRabbitHoleReturn } from "@/components/rabbit-hole";
 import { Button } from "@/components/ui/button";
 import { Experience } from "@/components/experience";
 import { jsonLd, pageMeta, person, SITE_URL } from "@/lib/seo";
@@ -206,8 +206,38 @@ function Portfolio() {
   // The intro is visual only: keep the document scroll container stable so
   // sticky positioning works from the first gesture, including in Safari.
   useEffect(() => {
-    // Climbing back out of the rabbit hole lands straight on the work, no intro.
-    if (takeFlag(CLIMBED_OUT) || window.location.hash === "#work") {
+    // Return to the gallery entry divider, with the same project filter.
+    const climbedOut = takeFlag(CLIMBED_OUT);
+    if (climbedOut || window.location.hash === `#${RABBIT_HOLE_RETURN}`) {
+      const saved = takeRabbitHoleReturn();
+      if (saved) setFilter(saved.filter);
+      setNoteRevealed(true);
+      setScrollReady(true);
+      let disposed = false;
+      let frame = 0;
+      const cancel = () => { disposed = true; cancelAnimationFrame(frame); };
+      const restore = () => {
+        if (disposed) return;
+        const entry = document.getElementById(RABBIT_HOLE_RETURN);
+        if (!entry) return;
+        const top = document.querySelector("main > header")?.getBoundingClientRect().bottom ?? 80;
+        window.scrollTo({ top: window.scrollY + entry.getBoundingClientRect().top - top, behavior: "instant" });
+      };
+      // Let the restored filter render and fonts settle before measuring.
+      frame = requestAnimationFrame(() => {
+        restore();
+        void document.fonts.ready.then(() => {
+          if (!disposed) frame = requestAnimationFrame(restore);
+        });
+      });
+      const gestures = ["wheel", "touchstart", "keydown"] as const;
+      gestures.forEach((event) => window.addEventListener(event, cancel, { passive: true }));
+      return () => {
+        cancel();
+        gestures.forEach((event) => window.removeEventListener(event, cancel));
+      };
+    }
+    if (window.location.hash === "#work") {
       setNoteRevealed(true);
       setScrollReady(true);
       requestAnimationFrame(() => document.getElementById("work")?.scrollIntoView({ behavior: "instant" }));
@@ -1196,9 +1226,9 @@ function Works({ filter, setFilter }: { filter: string; setFilter: (filter: stri
           ))}
           {filtered.length === 0 && <p className="py-24 text-muted-foreground">That shelf is being rearranged. Try another filter.</p>}
           {/* the way down to everything else */}
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-10">
+          <div id={RABBIT_HOLE_RETURN} className="flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-10">
             <p className="font-serif text-3xl">interested? <span className="text-muted-foreground">there's more.</span></p>
-            <RabbitHoleButton />
+            <RabbitHoleButton filter={filter} />
           </div>
         </div>
       </div>
