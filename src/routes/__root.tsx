@@ -10,6 +10,7 @@ import {
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
 
+import { profile } from "../lib/profile";
 import { ABOUT_SHORT, NAME, OG_IMAGE } from "../lib/seo";
 import appCss from "../styles.css?url";
 
@@ -75,7 +76,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: `${NAME} — software engineer` },
+      { title: `${profile.displayName}: software engineer` },
       { name: "description", content: ABOUT_SHORT },
       { name: "author", content: NAME },
       { name: "robots", content: "noindex, nofollow" },

@@ -26,7 +26,7 @@ import { firstInterest, profile, storyMilestones as timeline } from "@/lib/profi
 export const Route = createFileRoute("/")({
   head: () => ({
     ...pageMeta({
-      title: `${profile.name} — the anatomy of a curious developer`,
+      title: `${profile.displayName}: the anatomy of a curious developer`,
       description: profile.description,
       path: "/",
     }),

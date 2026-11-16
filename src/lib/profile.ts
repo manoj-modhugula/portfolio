@@ -2,6 +2,7 @@
 export const profile = {
   name: "Manoj Reddy Modhugula",
   firstName: "Manoj",
+  displayName: "Manoj Modhugula",
   email: "manoj.modhugula@gmail.com",
   links: {
     linkedin: "https://www.linkedin.com/in/manoj-modhugula/",

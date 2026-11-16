@@ -15,7 +15,7 @@ import { profile } from "@/lib/profile";
 export const Route = createFileRoute("/work")({
   head: () => ({
     ...pageMeta({
-      title: `Work — ${profile.name}`,
+      title: `Work: ${profile.displayName}`,
       description:
         "Saylo, MealWorks, and Firmly — projects by Manoj Reddy Modhugula, built end to end.",
       path: "/work",
