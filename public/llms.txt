@@ -1,0 +1,21 @@
+# Manoj Reddy Modhugula
+
+Software engineer and computer science graduate student at Georgia State University.
+
+Site: https://manoj-curious-developer.c5gq9ccdd9.chatgpt.site
+Email: manoj.modhugula@gmail.com
+LinkedIn: https://www.linkedin.com/in/manoj-modhugula/
+GitHub: https://github.com/manoj-modhugula
+X: https://x.com/heymeits
+
+## Projects
+
+- Saylo: multilingual voice conversations, live transcripts, and conversation history. https://saylo-voice.vercel.app/
+- MealWorks: personalized meal picks and plate ideas. https://meal-works.vercel.app/demo/today
+- Firmly: company research across business, industry, financials, and news. https://firmly-insights.vercel.app/
+
+## Experience
+
+- MathWorks: Software Engineer Intern, MATLAB Extension for VS Code.
+- Georgia State University: Graduate Research Assistant, Data Systems Lab.
+- Accolite: Software Engineer, claims platform for US health insurance.
