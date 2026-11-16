@@ -2,7 +2,7 @@
 
 A personal portfolio told along a hand-drawn thread: interests, projects, professional experience, and a place to say hello.
 
-**Site:** https://manoj-curious-developer.c5gq9ccdd9.chatgpt.site
+**Site:** https://manoj-modhugula.vercel.app
 
 ## Projects
 

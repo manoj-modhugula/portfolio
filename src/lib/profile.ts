@@ -8,7 +8,7 @@ export const profile = {
     github: "https://github.com/manoj-modhugula",
     x: "https://x.com/heymeits",
   },
-  siteUrl: "https://manoj-curious-developer.c5gq9ccdd9.chatgpt.site",
+  siteUrl: "https://manoj-modhugula.vercel.app",
   description: "Manoj Reddy Modhugula is a software engineer and computer science graduate student at Georgia State University, exploring web development and AI.",
 } as const;
 
